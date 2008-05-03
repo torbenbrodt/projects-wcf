@@ -16,6 +16,13 @@ ALTER TABLE wcf1_group ADD projectWebsite varchar(255) NOT NULL default '';
 -- for fetching purpose
 ALTER TABLE wcf1_group ADD projectSvn varchar(255) NOT NULL default '';
 
+DROP TABLE IF EXISTS wcf1_group_to_threads;
+CREATE TABLE wcf1_group_to_threads (
+	groupID int(11) UNSIGNED NOT NULL DEFAULT 0,
+	threadID int(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY  (groupID,threadID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS wcf1_group_to_licenses;
 CREATE TABLE wcf1_group_to_licenses (
 	groupID int(11) UNSIGNED NOT NULL DEFAULT 0,

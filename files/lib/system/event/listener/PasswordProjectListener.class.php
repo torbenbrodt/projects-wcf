@@ -16,19 +16,26 @@ class PasswordProjectListener implements EventListener {
 	 * @see EventListener::execute()
 	 */
 	public function execute($eventObj, $className, $eventName) {
-		if($className == 'PasswordChangeForm')
-			$password = $eventObj->newPassword;
-		else
-			$password = $eventObj->password;
+		switch($className) {
+			case 'PasswordChangeForm':
+				$password = $eventObj->newPassword;
+				$editor = WCF::getUser()->getEditor();
+				break;
 
-		if($className == 'PasswordChangeForm')
-			$editor = WCF::getUser()->getEditor();
-		else
-			$editor = new UserEditor($eventObj->user->userID);
+			case 'UserLoginForm':
+			case 'UserAddForm':
+			case 'RegisterForm':
+			case 'UserEditForm':
+				$password = $eventObj->password;
+				$editor = new UserEditor($eventObj->user->userID);
+				break;
+		}
 			
-		$additionalFields = array();
-		$additionalFields['projectPassword'] = sha1($password);
-		$editor->updateFields($additionalFields);
+		if(isset($password) && !empty($password)) {
+			$additionalFields = array();
+			$additionalFields['projectPassword'] = sha1($password);
+			$editor->updateFields($additionalFields);
+		}
 	}
 }
 ?>

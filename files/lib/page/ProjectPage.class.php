@@ -1,5 +1,6 @@
 <?php
 require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
+require_once(WCF_DIR.'lib/data/thread/ThreadList.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/HeaderMenu.class.php');
 
 /**
@@ -21,6 +22,8 @@ class ProjectPage extends AbstractPage {
 	protected $revisions = array();
 	protected $members = array();
 	
+	// threads
+	protected $threadList;
 
         /**
          * @see Page::readParameters()
@@ -56,15 +59,31 @@ class ProjectPage extends AbstractPage {
          */
         protected function fetchMembers($groupID) {
         	// sql query to fetch revisions
-		$sql = "SELECT		u.userID,
+		$sq1 = "SELECT		u.userID,
 					u.username,
 					(SELECT COUNT(*) FROM wcf".WCF_N."_group_leader l WHERE l.groupID = ug.groupID AND l.userID = u.userID) AS isLeader,
 					(SELECT COUNT(*) FROM wcf".WCF_N."_projectSvn svn WHERE svn.groupID = ug.groupID AND svn.author = u.username) AS commits
 			FROM		wcf".WCF_N."_user_to_groups ug
 			NATURAL JOIN	wcf".WCF_N."_user u
 			WHERE		ug.groupID = ".$groupID."
-			AND		u.username <> 'guest'
-			ORDER BY	isLeader DESC, u.username ASC; ";
+			AND		u.username <> 'guest' ";
+			
+		$sq2 = "SELECT		svn.userID,
+					svn.author AS username,
+					(SELECT COUNT(*) FROM wcf1_group_leader l WHERE l.groupID = svn.groupID AND l.userID = svn.userID) AS isLeader,
+					COUNT(svn.revision) AS commits
+			FROM		wcf1_projectSvn svn
+			WHERE		svn.author <> 'root'
+			AND		svn.groupID = ".$groupID." 
+			GROUP BY	svn.author";
+			
+		$sql = "SELECT		X.userID, 
+					X.username, 
+					X.isLeader, 
+					SUM(X.commits) AS commits
+			FROM		($sq1 UNION $sq2) X
+			GROUP BY	X.username
+			ORDER BY	X.isLeader DESC, X.username ASC;";
 
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
@@ -117,6 +136,16 @@ class ProjectPage extends AbstractPage {
          *
          * @param shortName
          */
+        protected function fetchThreads($groupID) {
+        	$this->threadList = new ThreadList();
+		$this->threadList->sqlJoins = "	NATURAL JOIN wcf1_group_to_threads gt ";
+		$this->threadList->readThreads();
+        }
+        
+        /**
+         *
+         * @param shortName
+         */
         protected function fetchProject($shortName) {
         	$sql = "SELECT		g.groupID,
         				g.groupName,
@@ -162,6 +191,7 @@ class ProjectPage extends AbstractPage {
 			'revisions' => $this->revisions,
 			'members' => $this->members,
 			'licenses' => $this->licenses,
+			'threads' => $this->threadList != null ? $this->threadList->threads : null,
 			'allowSpidersToIndexThisPage' => true
 		));
 		

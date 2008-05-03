@@ -4,7 +4,7 @@
 	<packageinformation>
 		<packagename>Projects</packagename>
 		<version>0.1.0</version>
-		<date>2007-09-26</date>
+		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
 	
@@ -14,7 +14,7 @@
 	</authorinformation>
 	
 	<requiredpackages>
-		<requiredpackage>com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="1.0.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage>com.woltlab.wcf.page.user.profile</requiredpackage>
 	</requiredpackages>
 	
