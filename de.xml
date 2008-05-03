@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="de">
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.trac_dir"><![CDATA[Trac Verzeichnis]]></item>
+		<item name="wcf.acp.option.trac_dir.description"><![CDATA[Verzeichnis, in das die Trac Projekte installiert werden.]]></item>
+	</category>
+
+	<category name="wcf.header.menu">
+		<item name="wcf.header.menu.projects"><![CDATA[Projekte]]></item>
+	</category>
+
+	<category name="wcf.usersOnline">
+		<item name="wcf.usersOnline.location.projectsPage"><![CDATA[<a href="index.php?page=Projects{SID_ARG_2ND}">Projekte</a>]]></item>
+	</category>
+	
+	<category name="wcf.projects">
+		<item name="wcf.projects.title"><![CDATA[Projekte]]></item>
+		<item name="wcf.projects.description"><![CDATA[Projekte, die von Mitgliedern gepflegt werden.]]></item>
+		<item name="wcf.projects.projectShortName"><![CDATA[ID]]></item>
+		<item name="wcf.projects.projectWebsite"><![CDATA[Website]]></item>
+		<item name="wcf.projects.projectSvn"><![CDATA[SVN]]></item>
+		<item name="wcf.projects.members"><![CDATA[Mitglieder]]></item>
+		<item name="wcf.projects.author"><![CDATA[Mitglied]]></item>
+		<item name="wcf.projects.timestamp"><![CDATA[Zeit]]></item>
+		<item name="wcf.projects.msg"><![CDATA[Nachricht]]></item>
+		<item name="wcf.projects.revisions"><![CDATA[Revisions]]></item>
+		<item name="wcf.projects.revision"><![CDATA[Revision]]></item>
+		<item name="wcf.projects.groupName"><![CDATA[Projektname]]></item>
+		<item name="wcf.projects.memberCount"><![CDATA[Mitglieder]]></item>
+		<item name="wcf.projects.firstActivity"><![CDATA[Erste Aktivität]]></item>
+		<item name="wcf.projects.lastActivity"><![CDATA[Letzte Aktivität]]></item>
+		<item name="wcf.projects.revisionCount"><![CDATA[Anzahl Revisions]]></item>
+		<item name="wcf.projects.licenses"><![CDATA[Lizenz(en)]]></item>
+		<item name="wcf.projects.passwordActivation"><![CDATA[Passwortaktivierung]]></item>
+		<item name="wcf.projects.passwordActivation.description"><![CDATA[Dieser Schritt ist notwendig, damit sie sich mit ihrem Benutzeraccount für TRAC oder SVN authentifizieren können.]]></item>
+		<item name="wcf.projects.passwordActivation.success"><![CDATA[Vielen Dank, sie wurden erfolgreich für die Projektarbeit freigeschaltet.]]></item>
+		<item name="wcf.projects.passwordActivation.task"><![CDATA[Ihr Benutzerkonto ist noch nicht für Projekte aktiviert.<br/>Sie müssen den <a href="index.php?form=ProjectPassword">Aktivierungsvorgang abschließen</a>, um sich über TRAC oder SVN authentifizieren zu können]]></item>.
+		<item name="wcf.projects.log"><![CDATA[Projekt Log]]></item>
+		<item name="wcf.projects.log.description"><![CDATA[Alle Anwendungen die etwas mit den Projektgruppen zu tun haben, schreiben ihre Logs hier herein.]]></item>
+		<item name="wcf.projects.log.delete"><![CDATA[Logmeldungen zurücksetzen]]></item>
+		<item name="wcf.projects.activation"><![CDATA[Aktivierung für Projekte]]></item>
+		<item name="wcf.projects.error.noProjects"><![CDATA[Es sind noch keine Projekte angelegt.]]></item>
+		<item name="wcf.projects.leading"><![CDATA[Projektleitung]]></item>
+	</category>
+	
+	<category name="wcf.user.userGroups">
+		<item name="wcf.user.userGroups.leader.licensing"><![CDATA[Lizenzierung]]></item>
+		<item name="wcf.user.userGroups.leader.administrate.licenses.add"><![CDATA[Lizenz(en) dem Projekt hinzufügen]]></item>
+		<item name="wcf.user.userGroups.leader.administrate.licenses.remove"><![CDATA[Ausgewählte Lizenz(en) aus dem Projekt entfernen]]></item>
+		<item name="wcf.user.userGroups.leader.administrate.licenses.description"><![CDATA[Bitte geben Sie den Namen der Lizenz ein, die Sie dem Projekt hinzufügen möchten. Mehrere Lizenzen werden mit je einem Komma voneinander getrennt.]]></item>
+		<item name="wcf.user.userGroups.leader.administrate.licenses"><![CDATA[Lizenz(en)]]></item>
+		<item name="wcf.user.userGroups.leader.licensing.notFound"><![CDATA[Lizenz wurde nicht gefunden.]]></item>
+		<item name="wcf.user.userGroups.leader.administrate.licensesInGroup"><![CDATA[{lang}{$licenses|count}{/lang} Lizenzen in dem Projekt]]></item>
+	</category>
+	
+	<category name="wcf.acp.menu.link.group">
+		<item name="wcf.acp.menu.link.group.licenses"><![CDATA[Lizenzen]]></item>
+	</category>
+	
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.project"><![CDATA[Dies ist eine Projektgruppe.]]></item>
+		<item name="wcf.acp.group.projectSettings"><![CDATA[Projektoptionen]]></item>
+		<item name="wcf.acp.group.projectWebsite"><![CDATA[Webseite]]></item>
+		<item name="wcf.acp.group.projectWebsite.description"><![CDATA[Zur Verlinkung des Projekts.]]></item>
+		<item name="wcf.acp.group.projectSvn"><![CDATA[SVN URL]]></item>
+		<item name="wcf.acp.group.projectSvn.description"><![CDATA[Per Cronjob werden von dieser Quelle für statistische Zwecke regelmäßig SVN Daten geholt.]]></item>
+		<item name="wcf.acp.group.projectShortName"><![CDATA[Kurzname (ID)]]></item>
+		<item name="wcf.acp.group.projectShortName.description"><![CDATA[Kurzname (ID) muss angegeben werden.]]></item>
+		<item name="wcf.acp.group.projectIntern"><![CDATA[Intern verwalten]]></item>
+		<item name="wcf.acp.group.projectIntern.description"><![CDATA[Wenn der Haken gesetzt wird, werden auf dem Server SVN &amp; Trac eingerichtet.]]></item>
+		<item name="wcf.acp.group.option.admin.user.canReadProjectLog"><![CDATA[Kann Projektlogdateien einsehen]]></item>
+		<item name="wcf.acp.group.option.admin.user.canReadProjectLog.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.admin.user.canDeleteProjectLog"><![CDATA[Kann Projektlogdateien einsehen]]></item>
+		<item name="wcf.acp.group.option.admin.user.canDeleteProjectLog.description"><![CDATA[]]></item>
+	</category>
+</language>

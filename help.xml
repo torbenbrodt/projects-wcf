@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/help.dtd">
+<data>	
+	<import>
+		<helpitem name="usercp.projects">
+			<parent>usercp</parent>
+			<refererpattern><![CDATA[index\.php\?(?:page=Projects|form=Projects|action=Projects)]]></refererpattern>
+			<showorder>5</showorder>
+		</helpitem>
+		
+		<helpitem name="usercp.licenses">
+			<parent>usercp</parent>
+			<refererpattern><![CDATA[index\.php\?(?:page=Licenses|form=Licenses|action=Licenses)]]></refererpattern>
+			<showorder>5</showorder>
+		</helpitem>
+	</import>
+</data>

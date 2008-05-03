@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE import SYSTEM "DTD/import.dtd">
+<data>
+	<import>
+		<cronjob>
+			<classPath>lib/system/cronjob/SVNProjectCronjob.class.php</classPath>
+			<description>Projects: SVN Lookup</description>
+			<startMinute>0</startMinute>
+			<startHour>2</startHour>
+			<startDom>*</startDom>
+			<startMonth>*</startMonth>
+			<startDow>*</startDow>
+			<execMultiple>0</execMultiple>
+			<canbeedited>1</canbeedited>
+			<canbedisabled>1</canbedisabled>
+		</cronjob>
+	</import>
+</data>

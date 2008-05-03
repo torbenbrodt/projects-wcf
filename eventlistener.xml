@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/eventListeners.dtd">
+<data>	
+	<import>
+		<!-- usercp: licensing form for leader //-->
+		<eventlistener>
+			<eventclassname>UserGroupAdministrateForm</eventclassname>
+			<eventname>readData</eventname>
+			<listenerclassfile>lib/system/event/listener/UserGroupAdministrateProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserGroupAdministrateForm</eventclassname>
+			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/UserGroupAdministrateProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		
+		<!-- usercp: show logs //-->
+		<eventlistener>
+			<eventclassname>UserGroupsPage</eventclassname>
+			<eventname>readData</eventname>
+			<listenerclassfile>lib/system/event/listener/UserGroupsPageProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>UserGroupsPage</eventclassname>
+			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/UserGroupsPageProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		
+		<!-- user changes password -> save extra column //-->
+		<eventlistener>
+			<eventclassname>PasswordChangeForm</eventclassname>
+			<eventname>saved</eventname>
+			<listenerclassfile>lib/system/event/listener/PasswordProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<!-- user logs in -> save extra column //-->
+		<eventlistener>
+			<eventclassname>UserLoginForm</eventclassname>
+			<eventname>saved</eventname>
+			<listenerclassfile>lib/system/event/listener/PasswordProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<!-- user registers -> save extra column //-->
+		<eventlistener>
+			<eventclassname>UserAddForm</eventclassname>
+			<eventname>saved</eventname>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/PasswordProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		
+		<!-- admin -->
+		<eventlistener>
+			<eventclassname>UserEditForm</eventclassname>
+			<eventname>save</eventname>
+			<environment>admin</environment>
+			<listenerclassfile>lib/system/event/listener/PasswordProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>validate</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>readFormParameters</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>save</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>saved</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>assignVariables</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectListener.class.php</listenerclassfile>
+		</eventlistener>
+		<!-- /admin -->
+	</import>
+</data>

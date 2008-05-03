@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package SYSTEM "http://www.woltlab.com/DTDs/package.dtd">
+<package name="de.easy-coding.wcf.projects">
+	<packageinformation>
+		<packagename>Projects</packagename>
+		<version>0.1.0</version>
+		<date>2007-09-26</date>
+		<plugin>com.woltlab.wcf</plugin>
+	</packageinformation>
+	
+	<authorinformation>
+		<author>Torben Brodt</author>
+		<authorurl>http://www.easy-coding.de</authorurl>
+	</authorinformation>
+	
+	<requiredpackages>
+		<requiredpackage>com.woltlab.wcf</requiredpackage>
+		<requiredpackage>com.woltlab.wcf.page.user.profile</requiredpackage>
+	</requiredpackages>
+	
+	<instructions type="install">
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
+		<groupoptions>groupoptions.xml</groupoptions>
+		<!--<templatepatch>templates.diff</templatepatch>//-->
+		<eventlistener>eventlistener.xml</eventlistener>
+		<cronjobs>cronjobs.xml</cronjobs>
+		<sql>install.sql</sql>
+		<headermenu>headermenu.xml</headermenu>
+		<acptemplates>acptemplates.tar</acptemplates>
+		<pagelocation>pagelocation.xml</pagelocation>
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="en">en.xml</languages>
+		<options>options.xml</options>
+	</instructions>
+</package>

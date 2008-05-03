@@ -1,0 +1,14 @@
+--- userGroupAdministrate.tpl	2007-09-21 17:46:02.000000000 +0200
++++ userGroupAdministrate_patched.tpl	2007-09-21 18:00:12.000000000 +0200
+@@ -100,10 +100,10 @@
+ 					</div>
+ 				</form>
+ 			{/if}
+-		</div>
++		</div>a
+ 	</div>
+ 
+ </div>
+ 
+ {include file='footer' sandbox=false}
+ </body>
