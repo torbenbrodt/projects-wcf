@@ -6,4 +6,4 @@
 #	$3 = username
 #	$4 = password
 
-svn log $1 --username $3 --password $4 --revision $2:HEAD --xml
+svn log $1 --username $3 --password $4 --revision $2:HEAD --xml --non-interactive --config-dir /var/www/easy-coding.de/subversion

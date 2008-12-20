@@ -48,7 +48,7 @@ class GroupProjectListener implements EventListener {
 				$sql = "SELECT 	COUNT(*) AS c 
 					FROM 	wcf".WCF_N."_group 
 					WHERE 	projectShortName='{$this->projectShortName}'
-					AND	groupID != {$eventObj->group->groupID};";
+					AND	groupID != {$eventObj->group->groupID}";
 				$row = WCF::getDB()->getFirstRow($sql);
 
 				if (intval($row['c']) > 0) {
@@ -138,7 +138,7 @@ class GroupProjectListener implements EventListener {
 				$this->projectSvn = $eventObj->group->projectSvn;
 				$this->projectShortName = $eventObj->group->projectShortName;
 			}
-
+			
 			WCF::getTPL()->assign(array(
 				'project' => $this->project,
 				'projectIntern' => $this->projectIntern,

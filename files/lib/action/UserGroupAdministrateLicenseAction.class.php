@@ -43,7 +43,7 @@ class UserGroupAdministrateLicenseAction extends AbstractAction {
 				FROM 			wcf".WCF_N."_projectLicenses 
 				NATURAL LEFT JOIN	wcf".WCF_N."_group_to_licenses
 				WHERE 			licenseName = '".escapeString($license)."'
-				AND			ISNULL(groupID) ;";
+				AND			ISNULL(groupID)";
 			$row = WCF::getDB()->getFirstRow($sql);
 			if($row) {
 				$this->licenseAddIDs[] = $row['licenseID'];

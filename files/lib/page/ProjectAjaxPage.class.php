@@ -53,7 +53,7 @@ class ProjectAjaxPage extends UserSuggestPage {
 					msg
 			FROM		wcf".WCF_N."_projectSvn svn
 			WHERE		groupID = ".$this->groupID."
-			AND 		revision = ".$this->rev."; ";
+			AND 		revision = ".$this->rev;
 
 		$row = WCF::getDB()->getFirstRow($sql);
 		echo '<div class="timeline-event-bubble-title"><a href="#" style="float:left" onclick="return timeBack(this)">&laquo;</a>'.$this->rev.'</div>';

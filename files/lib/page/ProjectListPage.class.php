@@ -55,7 +55,7 @@ class ProjectListPage extends SortablePage {
 			WHERE 		ug.userID = ".WCF::getUser()->userID."
 			AND		ISNULL(projectPassword)
 			AND 		project = 1 
-			AND 		projectIntern = 1;";
+			AND 		projectIntern = 1";
 
 		$row = WCF::getDB()->getFirstRow($sql);
 		return intval($row['c']);
@@ -101,7 +101,7 @@ class ProjectListPage extends SortablePage {
 
 		$sql = "SELECT		COUNT(*) AS count 
 			FROM		wcf".WCF_N."_group
-			NATURAL JOIN 	wcf".WCF_N."_projectSvn; ";
+			NATURAL JOIN 	wcf".WCF_N."_projectSvn ";
 		$row = WCF::getDB()->getFirstRow($sql);
 
 		return $row['count'];
@@ -120,7 +120,7 @@ class ProjectListPage extends SortablePage {
 					(SELECT COUNT(*) FROM wcf".WCF_N."_projectSvn svn WHERE svn.groupID = g.groupID) AS revisionCount
 			FROM			wcf".WCF_N."_group g
 			WHERE		g.project = 1
-			ORDER BY	".$this->sortField." ".$this->sortOrder."; ";
+			ORDER BY	".$this->sortField." ".$this->sortOrder;
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$row['groupName'] = sprintf('<a href="%s">%s</a>', 'index.php?page=Project&amp;id='.$row['projectShortName'].SID_ARG_2ND, $row['groupName']);

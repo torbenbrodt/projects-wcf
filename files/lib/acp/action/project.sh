@@ -10,8 +10,8 @@ echo "=== project.sh $3 $4"
 echo "=== `date`"
 echo "==================================="
 
-echo "<Location /${3}> require group ${3} </Location>" > ${1}/conf/svn-${3}.conf
-echo "<Location /trac/${3}> require group ${3} </Location>" > ${2}/conf/trac-${3}.conf
+echo -e "<Location /${3}>\n require group ${3}\n</Location>" > ${1}/conf/svn-${3}.conf
+echo -e "<Location /trac/${3}/login>\n require group ${3}\n</Location>" > ${2}/conf/trac-${3}.conf
 
 # make a clean directory
 #rm -rf ${1}/svn/$3

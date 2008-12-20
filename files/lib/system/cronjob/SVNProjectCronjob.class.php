@@ -18,7 +18,7 @@ class SVNProjectCronjob implements Cronjob {
 		if(!array_key_exists($username, $this->userCache)) {
 			$sql = "SELECT		userID
 				FROM		wcf".WCF_N."_user
-				WHERE		username = '".escapeString($username)."'; ";
+				WHERE		username = '".escapeString($username)."' ";
 			$row = WCF::getDB()->getFirstRow($sql);
 			if($row) {
 				$this->userCache[$username] = $row['userID'];
@@ -38,14 +38,15 @@ class SVNProjectCronjob implements Cronjob {
 	 * @param revision
 	 */
 	private function fetchSvn($groupID, $url, $user, $password, $revision) {
-		if(strpos($url, 'https') !== FALSE)
-			return;
-
+	if($groupID==11) {
+		return;
+		$var = file_get_contents('/var/www/www.easy-coding.de/web/swt.xml');
+	} else {
 		ob_start();
 		passthru("sh ".WCF_DIR."lib/acp/action/svnFetch.sh {$url} {$revision} {$user} {$password}");
 		$var = ob_get_contents();
 		ob_end_clean();
-
+	}
 		try {
 			$xml = new SimpleXMLElement($var);
 			foreach($xml->children() as $logentry) {

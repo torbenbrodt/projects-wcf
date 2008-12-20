@@ -1,6 +1,5 @@
 <?php
 require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
-require_once(WCF_DIR.'lib/data/thread/ThreadList.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/HeaderMenu.class.php');
 
 /**
@@ -22,8 +21,6 @@ class ProjectPage extends AbstractPage {
 	protected $revisions = array();
 	protected $members = array();
 	
-	// threads
-	protected $threadList;
 
         /**
          * @see Page::readParameters()
@@ -47,7 +44,7 @@ class ProjectPage extends AbstractPage {
 			WHERE 		ug.userID = ".WCF::getUser()->userID."
 			AND		ISNULL(projectPassword)
 			AND 		project = 1 
-			AND 		projectIntern = 1;";
+			AND 		projectIntern = 1";
 
 		$row = WCF::getDB()->getFirstRow($sql);
 		return intval($row['c']);
@@ -57,7 +54,7 @@ class ProjectPage extends AbstractPage {
          *
          * @param groupID
          */
-        protected function fetchMembers($groupID) {
+       	protected function fetchMembers($groupID) {
         	// sql query to fetch revisions
 		$sq1 = "SELECT		u.userID,
 					u.username,
@@ -90,7 +87,7 @@ class ProjectPage extends AbstractPage {
 			$this->members[] = $row;
 		}
         }
-        
+ 
         /**
          *
          * @param groupID
@@ -136,16 +133,6 @@ class ProjectPage extends AbstractPage {
          *
          * @param shortName
          */
-        protected function fetchThreads($groupID) {
-        	$this->threadList = new ThreadList();
-		$this->threadList->sqlJoins = "	NATURAL JOIN wcf1_group_to_threads gt ";
-		$this->threadList->readThreads();
-        }
-        
-        /**
-         *
-         * @param shortName
-         */
         protected function fetchProject($shortName) {
         	$sql = "SELECT		g.groupID,
         				g.groupName,
@@ -157,7 +144,7 @@ class ProjectPage extends AbstractPage {
 					(SELECT COUNT(*) FROM wcf".WCF_N."_projectSvn svn WHERE svn.groupID = g.groupID) AS revisionCount
 			FROM		wcf".WCF_N."_group g
 			WHERE		g.project = 1
-			AND		g.projectShortName = '".$shortName."'; ";
+			AND		g.projectShortName = '".$shortName."' ";
 
 		$this->general = WCF::getDB()->getFirstRow($sql);
         }
@@ -191,7 +178,6 @@ class ProjectPage extends AbstractPage {
 			'revisions' => $this->revisions,
 			'members' => $this->members,
 			'licenses' => $this->licenses,
-			'threads' => $this->threadList != null ? $this->threadList->threads : null,
 			'allowSpidersToIndexThisPage' => true
 		));
 		

@@ -90,14 +90,14 @@ function timeLoad() {
   var bandInfos = [
     Timeline.createBandInfo({
         eventSource:    eventSource,
-        date:           timelineDate,
+	date:		timelineDate,
         width:          "60%", 
         intervalUnit:   Timeline.DateTime.DAY, 
         intervalPixels: 80
     }),
     Timeline.createBandInfo({
         eventSource:    eventSource,
-        date:           timelineDate,
+	date:           timelineDate,
         showEventText:  false,
         width:          "25%", 
         intervalUnit:   Timeline.DateTime.MONTH, 
@@ -105,7 +105,7 @@ function timeLoad() {
     }),
     Timeline.createBandInfo({
         eventSource:    eventSource,
-        date:           timelineDate,
+	date:           timelineDate,
         showEventText:  false,
         width:          "15%", 
         intervalUnit:   Timeline.DateTime.YEAR, 
