@@ -67,8 +67,10 @@
 		<item name="wcf.acp.group.projectSvn.description"><![CDATA[Per Cronjob werden von dieser Quelle für statistische Zwecke regelmäßig SVN Daten geholt.]]></item>
 		<item name="wcf.acp.group.projectShortName"><![CDATA[Kurzname (ID)]]></item>
 		<item name="wcf.acp.group.projectShortName.description"><![CDATA[Kurzname (ID) muss angegeben werden.]]></item>
-		<item name="wcf.acp.group.projectIntern"><![CDATA[Intern verwalten]]></item>
-		<item name="wcf.acp.group.projectIntern.description"><![CDATA[Wenn der Haken gesetzt wird, werden auf dem Server SVN &amp; Trac eingerichtet.]]></item>
+		<item name="wcf.acp.group.projectIntern"><![CDATA[Subversion]]></item>
+		<item name="wcf.acp.group.projectIntern.description"><![CDATA[Soll ein lokales Subversion Repository verwendet werden?]]></item>
+		<item name="wcf.acp.group.projectTrac"><![CDATA[Trac]]></item>
+		<item name="wcf.acp.group.projectTrac.description"><![CDATA[Soll eine lokale Trac Umgebung angelegt werden?]]></item>
 		<item name="wcf.acp.group.option.admin.user.canReadProjectLog"><![CDATA[Kann Projektlogdateien einsehen]]></item>
 		<item name="wcf.acp.group.option.admin.user.canReadProjectLog.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.admin.user.canDeleteProjectLog"><![CDATA[Kann Projektlogdateien einsehen]]></item>

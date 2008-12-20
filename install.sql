@@ -7,8 +7,11 @@ ALTER TABLE wcf1_group ADD project tinyint(1) UNSIGNED NOT NULL default 0;
 -- shortname has to be set
 ALTER TABLE wcf1_group ADD projectShortName varchar(32) NOT NULL default '';
 
--- if this is set we will build svn/trac locally
+-- if this is set we will build svn locally
 ALTER TABLE wcf1_group ADD projectIntern tinyint(1) UNSIGNED NOT NULL default 0;
+
+-- if this is set we will build trac locally
+ALTER TABLE wcf1_group ADD projectTrac tinyint(1) UNSIGNED NOT NULL default 0;
 
 -- link to the website
 ALTER TABLE wcf1_group ADD projectWebsite varchar(255) NOT NULL default '';

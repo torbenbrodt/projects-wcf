@@ -60,15 +60,17 @@
 
 	<category name="wcf.acp.group">
 		<item name="wcf.acp.group.project"><![CDATA[This is a project fusion.]]></item>
-		<item name="wcf.acp.group.projectSettings"><![CDATA[Projektoptionen]]></item>
+		<item name="wcf.acp.group.projectSettings"><![CDATA[Projectoptions]]></item>
 		<item name="wcf.acp.group.projectWebsite"><![CDATA[Webpage]]></item>
 		<item name="wcf.acp.group.projectWebsite.description"><![CDATA[Used to link the project.]]></item>
 		<item name="wcf.acp.group.projectSvn"><![CDATA[SVN URL]]></item>
 		<item name="wcf.acp.group.projectSvn.description"><![CDATA[URL to fetch data for statistics. Can be an external source.]]></item>
 		<item name="wcf.acp.group.projectShortName"><![CDATA[Kurzname (ID)]]></item>
 		<item name="wcf.acp.group.projectShortName.description"><![CDATA[Kurzname (ID) muss angegeben werden.]]></item>
-		<item name="wcf.acp.group.projectIntern"><![CDATA[Intern verwalten]]></item>
-		<item name="wcf.acp.group.projectIntern.description"><![CDATA[Wenn der Haken gesetzt wird, werden auf dem Server SVN &amp; Trac eingerichtet.]]></item>
+		<item name="wcf.acp.group.projectIntern"><![CDATA[Subversion]]></item>
+		<item name="wcf.acp.group.projectIntern.description"><![CDATA[Should a local subversion reposiroty be ussed?]]></item>
+		<item name="wcf.acp.group.projectTrac"><![CDATA[Trac]]></item>
+		<item name="wcf.acp.group.projectTrac.description"><![CDATA[Should a local trac environment be used?]]></item>
 		<item name="wcf.acp.group.option.admin.user.canReadProjectLog"><![CDATA[Kann Projektlogdateien einsehen]]></item>
 		<item name="wcf.acp.group.option.admin.user.canReadProjectLog.description"><![CDATA[]]></item>
 		<item name="wcf.acp.group.option.admin.user.canDeleteProjectLog"><![CDATA[Kann Projektlogdateien einsehen]]></item>
