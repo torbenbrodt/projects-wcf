@@ -3,7 +3,7 @@
 <package name="de.easy-coding.wcf.projects.rails">
 	<packageinformation>
 		<packagename>Projects: Rails</packagename>
-		<version>0.1.0</version>
+		<version>0.2.0</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -15,7 +15,7 @@
 	
 	<requiredpackages>
 		<requiredpackage minversion="1.0.0">com.woltlab.wcf</requiredpackage>
-		<requiredpackage>de.easy-coding.wcf.projects.rails</requiredpackage>
+		<requiredpackage>de.easy-coding.wcf.projects</requiredpackage>
 	</requiredpackages>
 	
 	<instructions type="install">
