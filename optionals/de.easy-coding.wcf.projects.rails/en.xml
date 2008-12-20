@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
+<language languagecode="en">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.projectRails"><![CDATA[Rails]]></item>
+		<item name="wcf.acp.group.projectRails.description"><![CDATA[Should a local rails environment be used?]]></item>
+	</category>
+</language>
