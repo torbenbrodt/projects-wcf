@@ -25,5 +25,6 @@
 		<languages languagecode="en">en.xml</languages>
 		<options>options.xml</options>
 		<acptemplates>acptemplates.tar</acptemplates>
+		<eventlistener>eventlistener.xml</eventlistener>
 	</instructions>
 </package>
