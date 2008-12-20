@@ -1,18 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/options.dtd">
 <data>
-	<import>
+	<delete>
 		<options>
-			<option name="trac_dir">
-				<categoryname>index.general</categoryname>
-				<optiontype>text</optiontype>
-				<defaultvalue><![CDATA[/var/www/trac.easy-coding.de/web]]></defaultvalue>
-			</option>
-			<option name="svn_dir">
-				<categoryname>index.general</categoryname>
-				<optiontype>text</optiontype>
-				<defaultvalue><![CDATA[/var/www/svn.easy-coding.de/web]]></defaultvalue>
-			</option>
+			<option name="trac_dir"/>
+			<option name="svn_dir"/>
 		</options>
-	</import>
+	</delete>
 </data>

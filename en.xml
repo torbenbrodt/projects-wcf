@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
 <language languagecode="en">
-	<category name="wcf.acp.option">
-		<item name="wcf.acp.option.trac_dir"><![CDATA[Trac Directory]]></item>
-		<item name="wcf.acp.option.trac_dir.description"><![CDATA[Directory, where to place Trac projects]]></item>
-	</category>
 
 	<category name="wcf.header.menu">
 		<item name="wcf.header.menu.projects"><![CDATA[Projects]]></item>
@@ -15,15 +11,15 @@
 	</category>
 	
 	<category name="wcf.projects">
-		<item name="wcf.projects.title"><![CDATA[Projekte]]></item>
-		<item name="wcf.projects.description"><![CDATA[Projekte, die von Mitgliedern gepflegt werden.]]></item>
+		<item name="wcf.projects.title"><![CDATA[Projects]]></item>
+		<item name="wcf.projects.description"><![CDATA[Projects, contributed by our members.]]></item>
 		<item name="wcf.projects.projectShortName"><![CDATA[ID]]></item>
 		<item name="wcf.projects.projectWebsite"><![CDATA[Website]]></item>
 		<item name="wcf.projects.projectSvn"><![CDATA[SVN]]></item>
-		<item name="wcf.projects.members"><![CDATA[Mitglieder]]></item>
-		<item name="wcf.projects.author"><![CDATA[Mitglied]]></item>
+		<item name="wcf.projects.members"><![CDATA[Members]]></item>
+		<item name="wcf.projects.author"><![CDATA[Author]]></item>
 		<item name="wcf.projects.timestamp"><![CDATA[Zeit]]></item>
-		<item name="wcf.projects.msg"><![CDATA[Nachricht]]></item>
+		<item name="wcf.projects.msg"><![CDATA[Message]]></item>
 		<item name="wcf.projects.revisions"><![CDATA[Revisions]]></item>
 		<item name="wcf.projects.revision"><![CDATA[Revision]]></item>
 		<item name="wcf.projects.groupName"><![CDATA[Projektname]]></item>

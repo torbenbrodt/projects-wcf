@@ -82,13 +82,22 @@ class GroupProjectListener implements EventListener {
 				}
 			}
 			
-			// remove
+			// remove svn
 			if($this->projectInternOld && !$this->projectIntern) {
-				throw new UserInputException('cannot remove');
+				throw new UserInputException('cannot remove svn');
 			}
-			// move
+			// move svn
 			else if($this->projectInternOld && $this->projectIntern && $this->projectShortNameOld != $this->projectShortName) {
-				throw new UserInputException('cannot move');
+				throw new UserInputException('cannot move svn');
+			}
+			
+			// remove trac
+			if($this->projectTracOld && !$this->projectTrac) {
+				throw new UserInputException('cannot remove trac');
+			}
+			// move trac
+			else if($this->projectTracOld && $this->projectTrac && $this->projectShortNameOld != $this->projectShortName) {
+				throw new UserInputException('cannot move trac');
 			}
 			break;
 		
@@ -125,6 +134,7 @@ class GroupProjectListener implements EventListener {
 			if (!count($_POST) && $eventObj instanceof GroupEditForm) {
 				$this->project = $eventObj->group->project;
 				$this->projectIntern = $eventObj->group->projectIntern;
+				$this->projectTrac = $eventObj->group->projectTrac;
 				$this->projectWebsite = $eventObj->group->projectWebsite;
 				$this->projectSvn = $eventObj->group->projectSvn;
 				$this->projectShortName = $eventObj->group->projectShortName;
@@ -133,6 +143,7 @@ class GroupProjectListener implements EventListener {
 			WCF::getTPL()->assign(array(
 				'project' => $this->project,
 				'projectIntern' => $this->projectIntern,
+				'projectTrac' => $this->projectTrac,
 				'projectWebsite' => $this->projectWebsite,
 				'projectSvn' => $this->projectSvn,
 				'projectShortName' => $this->projectShortName

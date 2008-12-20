@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE language SYSTEM "http://www.woltlab.com/DTDs/language.dtd">
 <language languagecode="de">
-	<category name="wcf.acp.option">
-		<item name="wcf.acp.option.trac_dir"><![CDATA[Trac Verzeichnis]]></item>
-		<item name="wcf.acp.option.trac_dir.description"><![CDATA[Verzeichnis, in das die Trac Projekte installiert werden.]]></item>
-	</category>
 
 	<category name="wcf.header.menu">
 		<item name="wcf.header.menu.projects"><![CDATA[Projekte]]></item>
