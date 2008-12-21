@@ -1,8 +1,8 @@
 -- to acticate/deactive
-ALTER TABLE wcf1_group ADD projectRails tinyint(1) UNSIGNED NOT NULL default 0;
+ALTER TABLE wcf1_group ADD projectDjango tinyint(1) UNSIGNED NOT NULL default 0;
 
 -- views for ftp auth
-CREATE VIEW wcf1_projectRailsAuth AS 
+CREATE VIEW wcf1_projectDjangoAuth AS 
 	SELECT 
 			CONCAT(REPLACE(username,'@',''),'@',projectShortName) AS User,
 			1 AS status,
@@ -19,4 +19,4 @@ CREATE VIEW wcf1_projectRailsAuth AS
 	FROM wcf1_group 
 	INNER JOIN wcf1_user_to_groups USING(groupID)
 	INNER JOIN wcf1_user USING(userID)
-	WHERE wcf1_group.projectRails = 1;
+	WHERE wcf1_group.projectDjango = 1;
