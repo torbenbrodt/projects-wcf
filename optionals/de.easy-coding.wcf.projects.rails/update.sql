@@ -1,6 +1,3 @@
--- to acticate/deactive
-ALTER TABLE wcf1_group ADD projectRails tinyint(1) UNSIGNED NOT NULL default 0;
-
 -- views for ftp auth
 DROP VIEW wcf1_projectRailsAuth;
 CREATE VIEW wcf1_projectRailsAuth AS 
