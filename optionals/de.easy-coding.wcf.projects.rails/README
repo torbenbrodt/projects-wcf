@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# run on the host
+# iptables -t nat -A PREROUTING -p tcp -d 78.46.85.20 --dport 21 -i eth0 -j DNAT --to-destination 192.168.0.105:21
+# iptables -t nat -A PREROUTING -p tcp -d 78.46.85.20 --dport 20 -i eth0 -j DNAT --to-destination 192.168.0.105:20
+#
+# install auf dem client
+apt-get install ruby ruby1.8-dev build-essential
+wget http://rubyforge.org/frs/download.php/38646/rubygems-1.2.0.tgz
+tar xzvf rubygems-1.2.0.tgz
+cd rubygems-1.2.0
+ruby setup.rb
+ln -s /usr/bin/gem1.8 /usr/bin/gem
+gem update --system
+gem install passenger
+
+
+
+groupadd playground
+useradd -s /bin/false -d /bin/null -c "wcf1 groupid 18" -g playground playground
+
+rails /home/playground
+chown -R playground.playground /home/playground 
+ln -s /home/playground/public/ /var/www/playground
+
+#Include /var/www/trac.easy-coding.de/web/conf/trac-*.conf
+
+<Location /trac/biz/login>
+ require group biz
+</Location>
+
+
+<Location /playground>
+ RackBaseURI /home/playground/public
+</Location>
+
+
