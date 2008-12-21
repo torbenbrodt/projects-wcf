@@ -3,7 +3,7 @@
 <package name="de.easy-coding.wcf.projects">
 	<packageinformation>
 		<packagename>Projects</packagename>
-		<version>0.3.0</version>
+		<version>0.3.1</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -37,10 +37,8 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="0.2.0">
+	<instructions type="update" fromversion="0.3.0">
 		<files>files.tar</files>
-		<acptemplates>acptemplates.tar</acptemplates>
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="en">en.xml</languages>
+		<sql>update.sql</sql>
 	</instructions>
 </package>

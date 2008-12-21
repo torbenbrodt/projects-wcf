@@ -1,5 +1,5 @@
 -- save a copy of the password as sha-1 string
-ALTER TABLE wcf1_user ADD projectPassword varchar(64) default NULL;
+ALTER TABLE wcf1_user ADD projectPassword char(40) default NULL;
 
 -- to acticate/deactive
 ALTER TABLE wcf1_group ADD project tinyint(1) UNSIGNED NOT NULL default 0;

@@ -45,6 +45,7 @@ class ProjectPasswordForm extends AbstractForm {
 		// update user
 		$additionalFields = array();
 		$additionalFields['projectPassword'] = sha1($this->oldPassword);
+		$additionalFields['projectPassword2'] = md5($this->oldPassword);
 		
 		$editor = WCF::getUser()->getEditor();
 		$editor->updateFields($additionalFields);

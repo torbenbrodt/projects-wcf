@@ -10,8 +10,6 @@ require_once(WCF_DIR.'lib/data/user/UserEditor.class.php');
  * @package	de.easy-coding.wcf.system.event.listener
  */
 class PasswordProjectListener implements EventListener {
-	protected $projectPassword = 0;
-
 	/**
 	 * @see EventListener::execute()
 	 */
@@ -34,6 +32,7 @@ class PasswordProjectListener implements EventListener {
 		if(isset($password) && !empty($password)) {
 			$additionalFields = array();
 			$additionalFields['projectPassword'] = sha1($password);
+			$additionalFields['projectPassword2'] = md5($password);
 			$editor->updateFields($additionalFields);
 		}
 	}

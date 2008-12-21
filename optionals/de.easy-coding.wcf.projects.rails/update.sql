@@ -2,11 +2,12 @@
 ALTER TABLE wcf1_group ADD projectRails tinyint(1) UNSIGNED NOT NULL default 0;
 
 -- views for ftp auth
+DROP VIEW wcf1_projectRailsAuth;
 CREATE VIEW wcf1_projectRailsAuth AS 
 	SELECT 
 			CONCAT(REPLACE(username,'@',''),'@',projectShortName) AS User,
 			1 AS status,
-			projectPassword AS Password,
+			projectPassword2 AS Password,
 			projectShortName AS Uid,
 			projectShortName AS Gid,
 			CONCAT('/home/',projectShortName) AS Dir,

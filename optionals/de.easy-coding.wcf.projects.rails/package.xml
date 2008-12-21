@@ -3,7 +3,7 @@
 <package name="de.easy-coding.wcf.projects.rails">
 	<packageinformation>
 		<packagename>Projects: Rails</packagename>
-		<version>0.2.0</version>
+		<version>0.3.1</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -26,5 +26,9 @@
 		<options>options.xml</options>
 		<acptemplates>acptemplates.tar</acptemplates>
 		<eventlistener>eventlistener.xml</eventlistener>
+	</instructions>
+	
+	<instructions type="update" fromversion="0.2.0">
+		<sql>update.sql</sql>
 	</instructions>
 </package>
