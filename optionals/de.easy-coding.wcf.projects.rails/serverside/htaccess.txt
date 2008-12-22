@@ -1,0 +1,14 @@
+NameVirtualHost *
+<VirtualHost *>
+        ServerName localhost
+
+        DocumentRoot /var/www
+        RailsSpawnMethod conservative
+        Include /root/sites/rails-*.conf
+        RailsEnv development
+
+#       ErrorLog /var/log/apache2/error.log
+#       LogLevel warn
+#       CustomLog /var/log/apache2/access.log combined
+#       ServerSignature On
+</VirtualHost>

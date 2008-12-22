@@ -42,16 +42,18 @@ class GroupProjectListener implements EventListener {
 		
 		
 		case 'validate':
-			// get old values
-			$sql = "SELECT 	*
-				FROM 	wcf".WCF_N."_group 
-				WHERE 	groupID = {$eventObj->group->groupID}";
-			$old = WCF::getDB()->getFirstRow($sql);
+			if($eventObj->group) {
+				// get old values
+				$sql = "SELECT 	*
+					FROM 	wcf".WCF_N."_group 
+					WHERE 	groupID = {$eventObj->group->groupID}";
+				$old = WCF::getDB()->getFirstRow($sql);
 
-			$this->projectInternOld = $old['projectIntern'];
-			$this->projectTracOld = $old['projectTrac'];
-			$this->projectShortNameOld = $old['projectShortName'];
-			$this->groupLeadersOld = '';
+				$this->projectInternOld = $old['projectIntern'];
+				$this->projectTracOld = $old['projectTrac'];
+				$this->projectShortNameOld = $old['projectShortName'];
+				$this->groupLeadersOld = '';
+			}
 
 			if($this->project) {
 				if(empty($this->projectShortName)) {

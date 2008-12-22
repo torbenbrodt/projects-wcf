@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# parameters
+#	$1 = project shortname
+#	$2 = longname
+basedir=`dirname "$0"`
+
+# exit on error
+set -e
+
+# create temporary filesystem
+mkdir /tmp/$1
+mkdir /tmp/$1/branches
+mkdir /tmp/$1/tags
+mkdir /tmp/$1/trunk
+
+# create svn system
+svnadmin create /var/www/svn.easy-coding.de/web/svn/$1
+svn import /tmp/$1 file:///var/www/svn.easy-coding.de/web/svn/$1 -m "initial import"
+rm -rf /tmp/$1
+
+# change ownership
+chown -R www-data.www-data /var/www/svn.easy-coding.de/web/svn/$1
+
+# configure webserver
+echo -e "<Location /${1}>\n require group ${1}\n</Location>" > /root/sites/svn-${1}.conf
+
+# reload webserver config
+/etc/init.d/apache2 force-reload

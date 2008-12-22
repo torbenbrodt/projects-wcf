@@ -26,12 +26,14 @@ class GroupProjectRailsListener implements EventListener {
 		
 		
 		case 'validate':
-			// get old values
-			$sql = "SELECT 	*
-				FROM 	wcf".WCF_N."_group 
-				WHERE 	groupID = {$eventObj->group->groupID}";
-			$old = WCF::getDB()->getFirstRow($sql);
-			$this->projectRailsOld = $old['projectRails'];
+			if($eventObj->group) {
+				// get old values
+				$sql = "SELECT 	*
+					FROM 	wcf".WCF_N."_group 
+					WHERE 	groupID = {$eventObj->group->groupID}";
+				$old = WCF::getDB()->getFirstRow($sql);
+				$this->projectRailsOld = $old['projectRails'];
+			}
 			
 			// remove rails
 			if($this->projectRailsOld && !$this->projectRails) {

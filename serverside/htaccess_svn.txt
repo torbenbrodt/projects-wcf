@@ -1,0 +1,37 @@
+<Location />
+ DAV svn
+ SVNParentPath /var/www/svn.easy-coding.de/web/svn/
+# AuthzSVNAccessFile /var/www/svn.easy-coding.de/web/access.conf
+
+#<LimitExcept GET PROPFIND OPTIONS REPORT>
+# SSLRequireSSL
+  AuthName 'Subversion repository'
+
+  AuthType Basic
+  AuthBasicAuthoritative Off
+  AuthUserFile /dev/null
+  AuthGroupFile /dev/null
+  AuthMYSQL on
+  AuthMySQL_Authoritative on
+
+  AuthMySQL_Host 78.46.192.49
+  AuthMySQL_DB easy_coding
+  AuthMySQL_User easy_coding
+  AuthMySQL_Password u5NtueY8
+
+  AuthMySQL_Password_Table wcf1_projectAuth
+  AuthMySQL_Username_Field username
+  AuthMySQL_Password_Field passwd
+
+  AuthMySQL_Group_Table wcf1_projectAuthGroup
+  AuthMySQL_Group_User_Field username
+  AuthMySQL_Group_Field groups
+
+  AuthMySQL_Empty_Passwords off
+  AuthMySQL_Encryption_Types SHA1Sum
+
+  require group root
+#</LimitExcept>
+</Location>
+
+Include /root/sites/svn-*.conf

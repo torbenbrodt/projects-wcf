@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# parameters
+#	$1 = action (remove|add)
+#	$2 = project shortname/path
+#	$3 = username
+
+trac-admin /var/www/trac.easy-coding.de/web/trac/$2 permission $1 $3 TICKET_ADMIN MILESTONE_ADMIN REPORT_ADMIN WIKI_ADMIN
+

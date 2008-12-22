@@ -26,12 +26,14 @@ class GroupProjectDjangoListener implements EventListener {
 		
 		
 		case 'validate':
-			// get old values
-			$sql = "SELECT 	*
-				FROM 	wcf".WCF_N."_group 
-				WHERE 	groupID = {$eventObj->group->groupID}";
-			$old = WCF::getDB()->getFirstRow($sql);
-			$this->projectDjangoOld = $old['projectDjango'];
+			if($eventObj->group) {
+				// get old values
+				$sql = "SELECT 	*
+					FROM 	wcf".WCF_N."_group 
+					WHERE 	groupID = {$eventObj->group->groupID}";
+				$old = WCF::getDB()->getFirstRow($sql);
+				$this->projectDjangoOld = $old['projectDjango'];
+			}
 			
 			// remove django
 			if($this->projectDjangoOld && !$this->projectDjango) {

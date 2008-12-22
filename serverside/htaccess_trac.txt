@@ -1,0 +1,37 @@
+<Location /trac>
+  SetHandler mod_python
+  SetEnv PYTHON_EGG_CACHE /var/www/trac.easy-coding.de/web/eggs
+  PythonInterpreter main_interpreter
+  PythonHandler trac.web.modpython_frontend
+  PythonOption TracEnvParentDir /var/www/trac.easy-coding.de/web/trac
+  PythonOption TracUriRoot /trac
+</Location>
+
+<LocationMatch "/trac/[^/]+/login">
+  AuthName "Project Authentication"
+
+  AuthType Basic
+  AuthBasicAuthoritative Off
+  AuthUserFile /dev/null
+  AuthGroupFile /dev/nul
+  AuthMYSQL on
+  AuthMySQL_Authoritative on
+
+  AuthMySQL_Host 78.46.192.49
+  AuthMySQL_DB easy_coding
+  AuthMySQL_User easy_coding
+  AuthMySQL_Password u5NtueY8
+
+  AuthMySQL_Password_Table wcf1_projectAuth
+  AuthMySQL_Username_Field username
+  AuthMySQL_Password_Field passwd
+
+  AuthMySQL_Group_Table wcf1_projectAuthGroup
+  AuthMySQL_Group_User_Field username
+  AuthMySQL_Group_Field groups
+
+  AuthMySQL_Empty_Passwords off
+  AuthMySQL_Encryption_Types SHA1Sum
+</LocationMatch>
+
+Include /root/sites/trac-*.conf

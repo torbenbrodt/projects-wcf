@@ -1,0 +1,12 @@
+#!/bin/bash
+basedir=`dirname "$0"`
+
+# exit on error
+set -e
+
+dirs=`find /home -mindepth 1 -maxdepth 1`
+
+for dir in $dirs
+do
+	(cd $dir && svn update)
+done

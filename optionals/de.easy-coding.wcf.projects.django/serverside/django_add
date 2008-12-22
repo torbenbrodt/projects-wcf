@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# parameters
+#	$1 = project shortname
+#	$2 = boolean create skeleton
+basedir=`dirname "$0"`
+
+# exit on error
+set -e
+
+# add user and group
+#groupadd $1
+#useradd -s /bin/false -d /bin/null -c "wcf1 {$1}" -g $1 $1
+
+# check out from svn
+cd /home
+svn checkout https://svn.easy-coding.de/$1/trunk $1
+
+# check in skeleton
+if [ $2 ]; then
+	cd /tmp
+	django-admin startproject $1
+
+	mv /tmp/$1/* /home/$1
+	svn add /home/$1/*
+	svn commit /home/$1 -m "django skeleton"
+fi
+
+# change ownership
+chown -R $1.$1 $1
+
+# configure webserver
+echo -e "<Location /${1}/>\n  SetEnv DJANGO_SETTINGS_MODULE ${1}.settings\n  PythonInterpreter ${1}\n</Location>" > /root/sites/django-$1.conf
+
+# reload webserver config
+/etc/init.d/apache2 force-reload

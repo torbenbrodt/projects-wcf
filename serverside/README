@@ -1,0 +1,20 @@
+== Fetch licenses
+
+<?php
+$file = file_get_contents('http://opensource.org/licenses/alphabetical');
+preg_match('/The following licenses have been approved by the OSI\.(.+)<\/ul>/s', $file, $res);
+preg_match_all("/\n<li> <a href=\"(.+)\">(.+)<\/a>/", $res[1], $more);
+$res = array_combine($more[1], $more[2]);
+foreach($res as $url => $name) {
+	echo "INSERT INTO wcf1_projectLicenses (licenseName, licenseURL) VALUES ('".trim(str_replace(',','',$name))."','http://opensource.org{$url}');\n";
+}
+?>
+
+== Gastbenutzer
+guest:Yu3nuWaeDa3Ov7ha
+
+== Website ==
+http://www.easy-coding.de/wcf
+
+== guest user for svn cron
+http://svncron:Yu3nuWaeDa3Ov7ha@svn.easy-coding.de/wcf
