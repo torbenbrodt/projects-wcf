@@ -30,7 +30,7 @@ fi
 chown -R $1.$1 $1
 
 # configure webserver
-echo -e "<Location /${1}/>\n  SetEnv DJANGO_SETTINGS_MODULE ${1}.settings\n  PythonInterpreter ${1}\n</Location>" > /root/sites/django-$1.conf
+echo -e "<Location /${1}/>\n  SetEnv DJANGO_SETTINGS_MODULE ${1}.settings\n  PythonInterpreter ${1}\n PythonOption django.root /{$1}\n</Location>" > /root/sites/django-$1.conf
 
 # reload webserver config
 /etc/init.d/apache2 force-reload

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # parameters
-#	$1 = project shortname
+#	ruperta = project shortname
 #	$2 = boolean create skeleton
 basedir=`dirname "$0"`
 
@@ -9,34 +9,34 @@ basedir=`dirname "$0"`
 set -e
 
 # add user and group
-groupadd $1
-useradd -s /bin/false -d /bin/null -c "wcf1 {$1}" -g $1 $1
+groupadd ruperta
+useradd -s /bin/false -d /bin/null -c "wcf1 ruperta" -g ruperta ruperta
 
 # check out from svn
 cd /home
-svn checkout https://svn.easy-coding.de/$1/trunk $1
+svn checkout https://svn.easy-coding.de/ruperta/trunk ruperta
 
 # check in skeleton
 if [ $2 ]; then
 	cd /tmp
-	rails /tmp/$1
+	rails /tmp/ruperta
 	
 	# place workaround
-	sed -e '$d' /home/$1/config/environment.rb > /home/$1/config/environment.rb2
-	echo -e "  # from gems 2.2 you need this workaround\n  # http://groups.google.com/group/phusion-passenger/browse_thread/thread/d3e7b1f524f5ab62?pli=1\n  config.action_controller.relative_url_root = \"/${1}\"" >> /home/$1/config/environment.rb2
-	mv /home/$1/config/environment.rb2 /home/$1/config/environment.rb
+sed -e '$d' /home/ruperta/config/environment.rb > /home/ruperta/config/environment.rb2
+echo -e "  # from gems 2.2 you need this workaround\n  # http://groups.google.com/group/phusion-passenger/browse_thread/thread/d3e7b1f524f5ab62?pli=1\n  config.action_controller.relative_url_root = \"/${1}\"\nend" >> /home/ruperta/config/environment.rb2
+mv /home/ruperta/config/environment.rb2 /home/ruperta/config/environment.rb
 	
-	mv /tmp/$1/* /home/$1
-	svn add /home/$1/*
-	svn commit /home/$1 -m "rails skeleton"
+	mv /tmp/ruperta/* /home/ruperta
+	svn add /home/ruperta/*
+	svn commit /home/ruperta -m "rails skeleton"
 fi
 
 # change ownership
-chown -R $1.$1 /home/$1 
-ln -s /home/$1/public/ /var/www/$1
+chown -R ruperta.ruperta /home/ruperta 
+ln -s /home/ruperta/public/ /var/www/ruperta
 
 # configure webserver
-echo -e "RailsBaseURI /${1}" > /root/sites/rails-$1.conf
+echo -e "RailsBaseURI /${1}" > /root/sites/rails-ruperta.conf
 
 # reload webserver config
 /etc/init.d/apache2 force-reload
