@@ -24,14 +24,14 @@ do
 			mv WEB-INF/web.xml2 WEB-INF/web.xml
 	
 			# replace <context-root> in sun-web.xml
-			sed "s/<context-root>[^<]*<\/context-root>/<context-root>/${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
+			sed "s/<context-root>[^<]*<\/context-root>/<context-root>\/${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
 			mv WEB-INF/sun-web.xml2 WEB-INF/sun-web.xml
 			
 			# did any changes occur to these files, revert them!
 			svn commit WEB-INF/web.xml WEB-INF/sun-web.xml -m "glassfish robot"
 			
 			# autodeploy
-			zip /tmp/$shortname.zip *
+			zip -r /tmp/$shortname.zip * -x *\.svn*
 			mv /tmp/$shortname.zip /var/lib/glassfishv2/domains/domain1/autodeploy/$shortname.war
 		fi
 	fi

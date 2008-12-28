@@ -26,11 +26,11 @@ if [ $2 ]; then
 	mv WEB-INF/web.xml2 WEB-INF/web.xml
 
 	# replace <context-root> in sun-web.xml
-	sed "s/<context-root>[^<]*<\/context-root>/<context-root>/${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
+	sed "s/<context-root>[^<]*<\/context-root>/<context-root>\/${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
 	mv WEB-INF/sun-web.xml2 WEB-INF/sun-web.xml
 	
 	# autodeploy
-	zip $1.zip *
+	zip -r $1.zip * -x *\.svn*
 	mv $1.zip /var/lib/glassfishv2/domains/domain1/autodeploy/$1.war
 	
 	# check in svn
