@@ -24,7 +24,7 @@ do
 			mv WEB-INF/web.xml2 WEB-INF/web.xml
 	
 			# replace <context-root> in sun-web.xml
-			sed "s/<context-root>[^<]*<\/context-root>/<context-root>${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
+			sed "s/<context-root>[^<]*<\/context-root>/<context-root>/${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
 			mv WEB-INF/sun-web.xml2 WEB-INF/sun-web.xml
 			
 			# did any changes occur to these files, revert them!
