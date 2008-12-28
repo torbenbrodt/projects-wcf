@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# parameters
+#	$1 = project shortname
+#	$2 = boolean create skeleton
+basedir=`dirname "$0"`
+
+# exit on error
+set -e
+
+# add user and group
+groupadd $1
+useradd -s /bin/false -d /bin/null -c "wcf1 {$1}" -g $1 $1
+
+# check out from svn
+cd /home
+svn checkout https://svn.easy-coding.de/$1/trunk $1
+
+# check in skeleton
+if [ $2 ]; then
+	unzip /usr/share/glassfishv2/samples/quickstart/hello.war -d /tmp/$1
+	cd /tmp/$1
+	
+	# replace <display-name> in web.xml
+	sed "s/<display-name>[^<]*<\/display-name>/<display-name>${shortname}<\/display-name>/g" WEB-INF/web.xml > WEB-INF/web.xml2
+	mv WEB-INF/web.xml2 WEB-INF/web.xml
+
+	# replace <context-root> in sun-web.xml
+	sed "s/<context-root>[^<]*<\/context-root>/<context-root>${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
+	mv WEB-INF/sun-web.xml2 WEB-INF/sun-web.xml
+	
+	# autodeploy
+	zip $1.zip *
+	mv $1.zip /var/lib/glassfishv2/domains/domain1/autodeploy/$1.war
+	
+	# check in svn
+	mv /tmp/$1/* /home/$1
+	svn add /home/$1/*
+	svn commit /home/$1 -m "glassfish skeleton"
+	
+	# clean
+	rmdir /tmp/$1
+fi
+
+# change ownership
+chown -R $1.$1 /home/$1

@@ -1,0 +1,38 @@
+#!/bin/bash
+basedir=`dirname "$0"`
+
+# exit on error
+set -e
+
+dirs=`find /home -mindepth 1 -maxdepth 1`
+
+for dir in $dirs
+do
+	cd $dir
+	
+	if [ -d ".svn" ]; then
+		oldrev=$(svn info |grep '^Revision: '|sed 's/Revision: //g')
+		svn update
+		newrev=$(svn info |grep '^Revision: '|sed 's/Revision: //g')
+
+		# force redeploy
+		if [ "$oldrev" != "$newrev" ]; then
+			shortname=`basename "$dir"`
+		
+			# replace <display-name> in web.xml
+			sed "s/<display-name>[^<]*<\/display-name>/<display-name>${shortname}<\/display-name>/g" WEB-INF/web.xml > WEB-INF/web.xml2
+			mv WEB-INF/web.xml2 WEB-INF/web.xml
+	
+			# replace <context-root> in sun-web.xml
+			sed "s/<context-root>[^<]*<\/context-root>/<context-root>${shortname}<\/context-root>/g" WEB-INF/sun-web.xml > WEB-INF/sun-web.xml2
+			mv WEB-INF/sun-web.xml2 WEB-INF/sun-web.xml
+			
+			# did any changes occur to these files, revert them!
+			svn commit WEB-INF/web.xml WEB-INF/sun-web.xml -m "glassfish robot"
+			
+			# autodeploy
+			zip /tmp/$shortname.zip *
+			mv /tmp/$shortname.zip /var/lib/glassfishv2/domains/domain1/autodeploy/$shortname.war
+		fi
+	fi
+done
