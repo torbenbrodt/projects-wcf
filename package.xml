@@ -3,7 +3,7 @@
 <package name="de.easy-coding.wcf.projects">
 	<packageinformation>
 		<packagename>Projects</packagename>
-		<version>0.3.1</version>
+		<version>0.4.0</version>
 		<date>DATE</date>
 		<plugin>com.woltlab.wcf</plugin>
 	</packageinformation>
@@ -16,10 +16,13 @@
 	<requiredpackages>
 		<requiredpackage minversion="1.0.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage>com.woltlab.wcf.page.user.profile</requiredpackage>
+		<requiredpackage>de.easy-coding.wcf.xmlrpc</requiredpackage>
 	</requiredpackages>
 	
 	<optionalpackages>
 		<optionalpackage file="optionals/de.easy-coding.wcf.projects.rails.tar.gz">de.easy-coding.wcf.projects.rails</optionalpackage>
+		<optionalpackage file="optionals/de.easy-coding.wcf.projects.django.tar.gz">de.easy-coding.wcf.projects.django</optionalpackage>
+		<optionalpackage file="optionals/de.easy-coding.wcf.projects.glassfish.tar.gz">de.easy-coding.wcf.projects.glassfish</optionalpackage>
 	</optionalpackages>
 	
 	<instructions type="install">
@@ -37,8 +40,10 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="0.3.0">
+	<instructions type="update" fromversion="0.3.1">
 		<files>files.tar</files>
-		<sql>update.sql</sql>
+		<templates>templates.tar</templates>
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="en">en.xml</languages>
 	</instructions>
 </package>

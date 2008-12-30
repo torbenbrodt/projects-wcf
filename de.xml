@@ -15,6 +15,7 @@
 		<item name="wcf.projects.description"><![CDATA[Projekte, die von Mitgliedern gepflegt werden.]]></item>
 		<item name="wcf.projects.projectShortName"><![CDATA[ID]]></item>
 		<item name="wcf.projects.projectWebsite"><![CDATA[Website]]></item>
+		<item name="wcf.projects.projectTrac"><![CDATA[Trac]]></item>
 		<item name="wcf.projects.projectSvn"><![CDATA[SVN]]></item>
 		<item name="wcf.projects.members"><![CDATA[Mitglieder]]></item>
 		<item name="wcf.projects.author"><![CDATA[Mitglied]]></item>
@@ -26,6 +27,10 @@
 		<item name="wcf.projects.memberCount"><![CDATA[Mitglieder]]></item>
 		<item name="wcf.projects.firstActivity"><![CDATA[Erste Aktivität]]></item>
 		<item name="wcf.projects.lastActivity"><![CDATA[Letzte Aktivität]]></item>
+		<item name="wcf.projects.wikiPages"><![CDATA[Wikiseiten]]></item>
+		<item name="wcf.projects.milestones"><![CDATA[Meilensteine]]></item>
+		<item name="wcf.projects.tickets"><![CDATA[Tickets]]></item>
+		<item name="wcf.projects.ticketsValue"><![CDATA[{$general.tickets_total} Tickets ingesamt ({$general.tickets_closed} davon erledigt)]]></item>
 		<item name="wcf.projects.revisionCount"><![CDATA[Anzahl Revisions]]></item>
 		<item name="wcf.projects.licenses"><![CDATA[Lizenz(en)]]></item>
 		<item name="wcf.projects.passwordActivation"><![CDATA[Passwortaktivierung]]></item>

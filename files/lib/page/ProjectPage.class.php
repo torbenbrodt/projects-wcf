@@ -20,6 +20,7 @@ class ProjectPage extends AbstractPage {
 	protected $licenses = array();
 	protected $revisions = array();
 	protected $members = array();
+	protected $milestones = array();
 	
 
         /**
@@ -107,6 +108,32 @@ class ProjectPage extends AbstractPage {
 		}
         }
         
+         /**
+         *
+         * @param groupID
+         */
+        protected function fetchTrac($groupID)  {
+        	$minLifetime = 0;
+		$maxLifetime = 57600; // 16h
+
+		WCF::getCache()->addResource(
+			'projects.wcf.trac',
+			WCF_DIR.'cache/cache.projects.wcf.trac.php',
+			WCF_DIR.'lib/system/cache/CacheBuilderProjectsTrac.class.php',
+			$minLifetime,
+			$maxLifetime
+		);
+		$full = WCF::getCache()->get('projects.wcf.trac');
+		
+		if(isset($full[$groupID])) {
+			$this->general['tickets_closed'] = $full[$groupID]['closed'];
+			$this->general['tickets_notclosed'] = $full[$groupID]['notclosed'];
+			$this->general['tickets_total'] = $full[$groupID]['closed'];
+			$this->general['pages'] = $full[$groupID]['pages'];
+			$this->milestones = $full[$groupID]['milestones'];
+		}
+        }
+        
         /**
          *
          * @param groupID
@@ -138,6 +165,7 @@ class ProjectPage extends AbstractPage {
         				g.groupName,
 					g.projectShortName,
 					g.projectWebsite,
+					g.projectTrac,
 					(SELECT COUNT(*) FROM wcf".WCF_N."_user_to_groups ug NATURAL JOIN wcf".WCF_N."_user u WHERE ug.groupID = g.groupID AND u.username <> 'guest') AS memberCount,
 					(SELECT timestamp FROM wcf".WCF_N."_projectSvn svn WHERE svn.groupID = g.groupID ORDER BY timestamp ASC LIMIT 1) AS firstActivity,
 					(SELECT timestamp FROM wcf".WCF_N."_projectSvn svn WHERE svn.groupID = g.groupID ORDER BY timestamp DESC LIMIT 1) AS lastActivity,
@@ -164,6 +192,7 @@ class ProjectPage extends AbstractPage {
 		$this->fetchMembers($this->general['groupID']);
 		$this->fetchLicenses($this->general['groupID']);
 		$this->fetchRevisions($this->general['groupID']);
+		$this->fetchTrac($this->general['groupID']);
         }
 
 	/**
@@ -175,6 +204,7 @@ class ProjectPage extends AbstractPage {
 		// show page
 		WCF::getTPL()->assign(array(
 			'general' => $this->general,
+			'milestones' => $this->milestones,
 			'revisions' => $this->revisions,
 			'members' => $this->members,
 			'licenses' => $this->licenses,

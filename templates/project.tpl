@@ -52,7 +52,14 @@
 			<div class="formField">
 				<span style="padding:10px"><a href="{$general.projectWebsite}" class="externalURL">{$general.projectWebsite}</a></span>
 			</div>
-
+{if $general.projectTrac}
+			<div class="formFieldLabel">
+				<label>{lang}wcf.projects.projectTrac{/lang}</label>
+			</div>
+			<div class="formField">
+				<span style="padding:10px"><a href="http://trac.easy-coding.de/trac/{$general.projectShortName}" class="externalURL">http://trac.easy-coding.de/trac/{$general.projectShortName}</a></span>
+			</div>
+{/if}
 			<div class="formFieldLabel">
 				<label>{lang}wcf.projects.memberCount{/lang}</label>
 			</div>
@@ -75,12 +82,29 @@
 				<span style="padding:10px">{'d.m.Y H:i'|gmdate:$general.lastActivity}</span>
 			</div>
 {/if}
+
 			<div class="formFieldLabel">
 				<label>{lang}wcf.projects.revisionCount{/lang}</label>
 			</div>
 			<div class="formField">
 				<span style="padding:10px">{$general.revisionCount}</span>
 			</div>
+{if $general.tickets_total|isset}
+			<div class="formFieldLabel">
+				<label>{lang}wcf.projects.tickets{/lang}</label>
+			</div>
+			<div class="formField">
+				<span style="padding:10px">{lang}wcf.projects.ticketsValue{/lang}</span>
+			</div>
+{/if}
+{if $general.pages|isset}
+			<div class="formFieldLabel">
+				<label>{lang}wcf.projects.wikiPages{/lang}</label>
+			</div>
+			<div class="formField">
+				<span style="padding:10px">{$general.pages}</span>
+			</div>
+{/if}
 	
 	{if $members|count > 0}
 	<a name="members"></a>
@@ -102,6 +126,29 @@
 					{if $member.isLeader}<p>{lang}wcf.projects.leading{/lang}</p>{/if}
 				</td>
 				<td>{$member.commits}</td>
+			</tr>
+		{/foreach}
+		</tbody>
+		</table>
+	</fieldset>
+	{/if}
+	
+	{if $milestones|count > 0}
+	<a name="milestones"></a>
+	<fieldset>
+		<legend><img src="{@RELATIVE_WCF_DIR}icon/milestonesM.png" alt="" /> {lang}wcf.projects.milestones{/lang}</legend>
+		<table class="tableList">
+		<thead>
+		<tr class="tableHead">
+			<th><div style="padding:5px">{lang}wcf.projects.milestones{/lang}</div></th>
+		</tr>
+		</thead>
+		<tbody>
+		{foreach from=$milestones item=milestone}
+			<tr class="container-{cycle values='1,2'}">
+				<td>
+					<a href="http://trac.easy-coding.de/trac/{$general.projectShortName}/milestone/{$milestone}">{$milestone}</a>
+				</td>
 			</tr>
 		{/foreach}
 		</tbody>
