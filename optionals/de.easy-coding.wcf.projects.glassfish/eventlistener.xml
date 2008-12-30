@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/eventListeners.dtd">
+<data>	
+	<import>
+		<!-- admin -->
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>validate</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectGlassfishListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>readFormParameters</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectGlassfishListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>save</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectGlassfishListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>saved</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectGlassfishListener.class.php</listenerclassfile>
+		</eventlistener>
+		<eventlistener>
+			<eventclassname>GroupAddForm</eventclassname>
+			<eventname>assignVariables</eventname>
+			<environment>admin</environment>
+			<inherit>1</inherit>
+			<listenerclassfile>lib/system/event/listener/GroupProjectGlassfishListener.class.php</listenerclassfile>
+		</eventlistener>
+		<!-- /admin -->
+	</import>
+</data>
