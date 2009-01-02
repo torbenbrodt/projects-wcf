@@ -72,6 +72,10 @@ if [ $2 ]; then
 	
 	# create media dir
 	cp -r /var/lib/python-support/python2.5/django/contrib/admin/media/ media
+
+	# create www symlink for media
+	mkdir /var/www/$1
+	ln -s /home/$1/media /var/www/$1/media
 	
 	# move to real path and commit skeleton
 	mv /tmp/$1/* /home/$1
