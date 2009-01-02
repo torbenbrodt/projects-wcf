@@ -9,8 +9,8 @@ basedir=`dirname "$0"`
 set -e
 
 # add user and group
-#groupadd $1
-#useradd -s /bin/false -d /bin/null -c "wcf1 {$1}" -g $1 $1
+groupadd $1
+useradd -s /bin/false -d /bin/null -c "wcf1 {$1}" -g $1 $1
 
 # check out from svn
 cd /home
@@ -20,8 +20,62 @@ svn checkout https://svn.easy-coding.de/$1/trunk $1
 if [ $2 ]; then
 	cd /tmp
 	django-admin startproject $1
-
+	
+	cd $1
+	
+	# add environment path
+	echo -e "import sys, os\nsys.path.insert(0, os.path.join(os.path.dirname(__file__)))" > settings.py.bak
+	cat settings.py >> settings.py.bak
+	mv settings.py.bak settings.py
+	
+	sed "s/DATABASE_ENGINE = '[^']*'/DATABASE_ENGINE = 'sqlite3'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace DATABASE_ENGINE
+	sed "s/DATABASE_ENGINE = '[^']*'/DATABASE_ENGINE = 'sqlite3'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace DATABASE_NAME
+	sed "s/DATABASE_NAME = '[^']*'/DATABASE_NAME = '\/var\/db\/${1}.db'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace TIME_ZONE
+	sed "s/TIME_ZONE = '[^']*'/TIME_ZONE = 'Europe\/Berlin'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace LANGUAGE_CODE
+	sed "s/LANGUAGE_CODE = '[^']*'/LANGUAGE_CODE = 'de'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace MEDIA_ROOT
+	sed "s/MEDIA_ROOT = '[^']*'/MEDIA_ROOT = '\/home\/${1}\/media\/'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace MEDIA_URL
+	sed "s/MEDIA_URL = '[^']*'/MEDIA_URL = '\/${1}\/media\/'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# replace MEDIA_URL
+	sed "s/ADMIN_MEDIA_PREFIX = '[^']*'/ADMIN_MEDIA_PREFIX = '\/${1}\/media\/'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# add template path
+	sed "s/TEMPLATE_DIRS = (/TEMPLATE_DIRS = (\n    '\/home\/${1}\/templates'/g" settings.py > settings.py.bak
+	mv settings.py.bak settings.py
+	
+	# touch database
+	touch /var/db/$1.db
+	chown www-data.www-data /var/db/$1.db
+	
+	# create template dir
+	mkdir templates
+	
+	# create media dir
+	cp -r /var/lib/python-support/python2.5/django/contrib/admin/media/ media
+	
+	# move to real path and commit skeleton
 	mv /tmp/$1/* /home/$1
+	rmdir /tmp/$1
 	svn add /home/$1/*
 	svn commit /home/$1 -m "django skeleton"
 fi
