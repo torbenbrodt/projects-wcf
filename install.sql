@@ -70,7 +70,7 @@ UNION
 DROP VIEW IF EXISTS wcf1_projectAuthGroup;
 CREATE VIEW wcf1_projectAuthGroup AS SELECT
 	projectShortname AS groups,
-	username 
+	username
 FROM 	wcf1_group 
 	NATURAL JOIN wcf1_user_to_groups 
 	NATURAL JOIN wcf1_user 
@@ -78,6 +78,7 @@ WHERE 	projectIntern = 1
 AND 	NOT ISNULL(projectPassword)
 UNION 
 	SELECT projectShortName AS groups, 'svncron' AS username FROM wcf1_group WHERE projectIntern = 1;
+
 
 -- licenses
 INSERT INTO wcf1_projectLicenses (licenseName, licenseURL) VALUES ('Academic Free License','http://opensource.org/licenses/afl-3.0.php');

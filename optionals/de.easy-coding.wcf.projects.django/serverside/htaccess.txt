@@ -1,16 +1,16 @@
 NameVirtualHost *
 <VirtualHost *>
         ServerName localhost
-        
+
         DocumentRoot /var/www/
         SetHandler python-program
         PythonHandler django.core.handlers.modpython
         PythonDebug On
         PythonPath "['/usr/share/doc/python-django','/home'] + sys.path"
 
-        Include /root/sites/django-*.conf
-
-        <Location "/media">
-            SetHandler None
+        <Location ~ "/([^/]+)/media">
+                SetHandler None
         </Location>
+
+        Include /root/sites/django-*.conf
 </VirtualHost>

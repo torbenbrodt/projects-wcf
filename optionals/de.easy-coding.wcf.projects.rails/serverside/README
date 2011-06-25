@@ -2,6 +2,9 @@ Install FTP:
 
 apt-get install pure-ftpd-mysql
 cp /var/lib/vz/private/105/etc/pure-ftpd/db/mysql.conf /var/lib/vz/private/102/etc/pure-ftpd/db/mysql.conf
+vim /etc/pure-ftpd/db/mysql.conf
+:%s/wcf1_projectRailsAuth/wcf1_projectGlassfishAuth/
+/etc/init.d/pure-ftpd-mysql restart
 
 
 
@@ -15,6 +18,7 @@ ruby setup.rb
 ln -s /usr/bin/gem1.8 /usr/bin/gem
 gem update --system
 gem install passenger
+gem install capistrano
 
 
 

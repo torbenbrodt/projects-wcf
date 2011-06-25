@@ -9,6 +9,8 @@ dirs=`find /home -mindepth 1 -maxdepth 1`
 for dir in $dirs
 do
 	cd $dir
+	shortname=`basename "$dir"`
+	chown $shortname.www-data . -R
 	
 	if [ -d ".svn" ]; then
 		oldrev=$(svn info |grep '^Revision: '|sed 's/Revision: //g')
@@ -17,6 +19,7 @@ do
 
 		# force redeploy
 		if [ "$oldrev" != "$newrev" ]; then
+			rake db:migrate
 			touch tmp/restart.txt
 		fi
 	fi

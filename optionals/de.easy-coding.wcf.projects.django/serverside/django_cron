@@ -11,6 +11,8 @@ do
 	cd $dir
 	
 	if [ -d ".svn" ]; then
+		shortname=`basename "$dir"`
+
 		oldrev=$(svn info |grep '^Revision: '|sed 's/Revision: //g')
 		svn update
 		newrev=$(svn info |grep '^Revision: '|sed 's/Revision: //g')
@@ -19,5 +21,10 @@ do
 		#if [ "$oldrev" != "$newrev" ]; then
 		#	touch tmp/restart.txt
 		#fi
+		
+		if [ -f "update.sql" ]; then
+			sqlite3 /var/db/$shortname.db < update.sql >> update.sql.log
+			rm update.sql
+		fi
 	fi
 done
