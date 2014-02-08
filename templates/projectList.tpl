@@ -61,7 +61,8 @@
 <div class="border container-3" style="padding:10px">
 <b>Was hat es mit der Projektintegration auf sich?</b><br />
 Wir haben die Versionsverwaltung Subversion und das Projektmanagement-Tool Trac mit dem Woltlab Communiy Framework verbunden. Das sind beides Werkzeuge, die das Programmieren im Team sehr erleichtern.
-Gruppenmanagement und Authentifizierung funktionieren dadurch komplett &uuml;ber die fertigen Werkzeuge vom WCF - und damit &uuml;ber dieses Forum.<br /><br />
+Gruppenmanagement und Authentifizierung funktionieren dadurch komplett &uuml;ber die fertigen Werkzeuge vom WCF - und damit &uuml;ber dieses Forum.<br />
+<br />
 
 Vorerst behalte ich mir noch das Recht vor Projekte selbst zu gr&uuml;nden. Wenn ihr aber Projektideen habt und Subversion + TRAC Hosting sucht, dann meldet euch einfach bei mir. Mehr Informationen findet ihr im <a href="http://www.easy-coding.de/foren-projektintegration-t4320.html">offiziellen Statement</a>.
 </div>

@@ -69,7 +69,7 @@ class GroupProjectListener implements EventListener {
 				if (intval($row['c']) > 0) {
 					throw new UserInputException('projectShortName', 'notUnique');
 				}
-				
+				if(false) {
 				// get group leaders for comparison
 				$sql = "SELECT          user.username
 					FROM            wcf".WCF_N."_group_leader leader
@@ -81,6 +81,7 @@ class GroupProjectListener implements EventListener {
 				while ($row = WCF::getDB()->fetchArray($result)) {
 					if (!empty($this->groupLeaders)) $this->groupLeaders .= ', ';
 					$this->groupLeadersOld .= $row['username'];
+				}
 				}
 			}
 			
@@ -127,7 +128,7 @@ class GroupProjectListener implements EventListener {
 			
 			// give groupleaders special rights
 			if($this->projectTrac && $this->groupLeaders != $this->groupLeadersOld) {
-				system("ssh 192.168.0.104 project_updatetrac {$this->projectShortName}");
+				#system("ssh 192.168.0.104 project_updatetrac {$this->projectShortName}");
 			}
 			break;
 		

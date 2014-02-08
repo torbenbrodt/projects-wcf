@@ -20,7 +20,7 @@ class ProjectPage extends AbstractPage {
 	protected $licenses = array();
 	protected $revisions = array();
 	protected $members = array();
-	protected $milestones = array();
+        protected $milestones = array();
 	
 
         /**
@@ -59,7 +59,7 @@ class ProjectPage extends AbstractPage {
         	// sql query to fetch revisions
 		$sq1 = "SELECT		u.userID,
 					u.username,
-					(SELECT COUNT(*) FROM wcf".WCF_N."_group_leader l WHERE l.groupID = ug.groupID AND l.userID = u.userID) AS isLeader,
+					(SELECT COUNT(*) FROM wcf".WCF_N."_group_leader l WHERE l.groupID = ug.groupID AND l.leaderUserID = u.userID) AS isLeader,
 					(SELECT COUNT(*) FROM wcf".WCF_N."_projectSvn svn WHERE svn.groupID = ug.groupID AND svn.author = u.username) AS commits
 			FROM		wcf".WCF_N."_user_to_groups ug
 			NATURAL JOIN	wcf".WCF_N."_user u
@@ -68,7 +68,7 @@ class ProjectPage extends AbstractPage {
 			
 		$sq2 = "SELECT		svn.userID,
 					svn.author AS username,
-					(SELECT COUNT(*) FROM wcf1_group_leader l WHERE l.groupID = svn.groupID AND l.userID = svn.userID) AS isLeader,
+					(SELECT COUNT(*) FROM wcf1_group_leader l WHERE l.groupID = svn.groupID AND l.leaderUserID = svn.userID) AS isLeader,
 					COUNT(svn.revision) AS commits
 			FROM		wcf1_projectSvn svn
 			WHERE		svn.author <> 'root'

@@ -124,8 +124,8 @@ class ProjectListPage extends SortablePage {
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$row['groupName'] = sprintf('<a href="%s">%s</a>', 'index.php?page=Project&amp;id='.$row['projectShortName'].SID_ARG_2ND, $row['groupName']);
-			$row['firstActivity'] = DateUtil::formatDate(null, $row['firstActivity']);
-			$row['lastActivity'] = DateUtil::formatDate(null, $row['lastActivity']);
+			$row['firstActivity'] = $row['firstActivity'] ? DateUtil::formatDate(null, $row['firstActivity']) : '-';
+			$row['lastActivity'] = $row['lastActivity'] ? DateUtil::formatDate(null, $row['lastActivity']) : '-';
 			$row['projectWebsite'] = sprintf('<a href="%s"><img src="'.RELATIVE_WCF_DIR.'icon/websiteM.png" alt="" /></a>', $row['projectWebsite']);
 			$this->projects[] = $row;
 		}

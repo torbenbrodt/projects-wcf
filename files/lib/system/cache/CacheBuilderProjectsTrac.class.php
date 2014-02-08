@@ -1,21 +1,33 @@
 <?php
 // WCF include
+
 require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
 
 // my includes
 require_once(WCF_DIR.'lib/util/xmlrpc/xmlrpc.inc');
 
+
 /**
+
  * cache for all trac projects
+
  * 
+
  * @author	Torben Brodt
+
  * @package	de.easy-coding.wcf.projects
+
  */
+
 class CacheBuilderProjectsTrac implements CacheBuilder {
 
+
 	/**
+
 	 * @see CacheBuilder::getData()
+
 	 */
+
 	public function getData($cacheResource) {
 		$store = array();
 
@@ -33,6 +45,7 @@ class CacheBuilderProjectsTrac implements CacheBuilder {
 		}
 
 		return $store;
+
 	}
 	
 	/**
@@ -72,5 +85,7 @@ class CacheBuilderProjectsTrac implements CacheBuilder {
 		}
 		return $store;
 	}
+
 }
+
 ?>
